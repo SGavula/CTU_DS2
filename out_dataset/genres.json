@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Action",
+    "description": "Action games"
+  },
+  {
+    "name": "Adventure",
+    "description": "Adventure games"
+  },
+  {
+    "name": "RPG",
+    "description": "RPG games"
+  },
+  {
+    "name": "Simulation",
+    "description": "Simulation games"
+  },
+  {
+    "name": "Strategy",
+    "description": "Strategy games"
+  },
+  {
+    "name": "Sports",
+    "description": "Sports games"
+  },
+  {
+    "name": "Puzzle",
+    "description": "Puzzle games"
+  },
+  {
+    "name": "Shooter",
+    "description": "Shooter games"
+  },
+  {
+    "name": "Platformer",
+    "description": "Platformer games"
+  },
+  {
+    "name": "Horror",
+    "description": "Horror games"
+  },
+  {
+    "name": "Racing",
+    "description": "Racing games"
+  },
+  {
+    "name": "Fighting",
+    "description": "Fighting games"
+  },
+  {
+    "name": "Casual",
+    "description": "Casual games"
+  },
+  {
+    "name": "Multiplayer",
+    "description": "Multiplayer games"
+  },
+  {
+    "name": "Survival",
+    "description": "Survival games"
+  },
+  {
+    "name": "Stealth",
+    "description": "Stealth games"
+  },
+  {
+    "name": "Roguelike",
+    "description": "Roguelike games"
+  },
+  {
+    "name": "Visual Novel",
+    "description": "Visual Novel games"
+  },
+  {
+    "name": "Sandbox",
+    "description": "Sandbox games"
+  },
+  {
+    "name": "Indie",
+    "description": "Indie games"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "seed": 20250927,
+  "n_users": 10000,
+  "n_games": 5000,
+  "n_achievements": 50000,
+  "n_game_views": 100000,
+  "n_activities": 200000,
+  "n_studios": 1000,
+  "n_publishers": 500,
+  "n_reviews": 100000,
+  "n_scores": 500000,
+  "n_tags": 500,
+  "generated_at": "2025-10-25T13:20:18.588000"
+}
