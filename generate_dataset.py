@@ -218,7 +218,7 @@ def gen_game_activity(n_acts, games, users):
         hours = round(hours, 2)
         # Random date in the past 30 days
         random_date = datetime.now() - timedelta(days=random.randint(0, 29))
-        timestamp = random_date.isoformat()
+        timestamp = random_date.strftime("%Y-%m-%d")
         acts.append({
             "activity_id": i,
             "game_id": g["game_id"],
