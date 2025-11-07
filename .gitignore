@@ -13,3 +13,6 @@ __pycache__/
 
 # Ignore environment variables
 .env
+
+# Ignore dataset
+out_dataset/
