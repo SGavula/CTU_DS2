@@ -1,7 +1,6 @@
 # Python virtual environment
 ds2_venv/
 
-
 # Python cache and compiled files
 __pycache__/
 *.py[cod]
@@ -11,3 +10,6 @@ __pycache__/
 
 # Zip files
 *.zip
+
+# Ignore environment variables
+.env

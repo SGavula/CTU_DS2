@@ -204,6 +204,7 @@ def gen_game_activity(n_acts, games, users):
     # create a Pareto-distributed "activity score" to bias selection
     activity_scores = np.random.pareto(a=1.5, size=U) + 1.0
     activity_scores /= activity_scores.sum()
+
     for i in range(1, n_acts+1):
         # pick user by activity_scores
         u_idx = np.random.choice(range(U), p=activity_scores)
@@ -215,11 +216,15 @@ def gen_game_activity(n_acts, games, users):
         if hours > 3000:
             hours = 3000.0
         hours = round(hours, 2)
+        # Random date in the past 30 days
+        random_date = datetime.now() - timedelta(days=random.randint(0, 29))
+        timestamp = random_date.isoformat()
         acts.append({
             "activity_id": i,
             "game_id": g["game_id"],
             "user_id": u_id,
-            "number_of_hours": hours
+            "number_of_hours": hours,
+            "timestamp": timestamp
         })
     return acts
  
@@ -403,6 +408,6 @@ if __name__ == "__main__":
     p.add_argument("--n-tags", type=int, default=500)
     p.add_argument("--n-reviews", type=int, default=100000)
     p.add_argument("--n-scores", type=int, default=500000)
-    p.add_argument("--outdir", type=str, default="./out_gps")
+    p.add_argument("--outdir", type=str, default="./out_dataset")
     args = p.parse_args()
     main(args)
