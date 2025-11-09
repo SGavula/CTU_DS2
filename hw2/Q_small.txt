@@ -1,0 +1,21 @@
+ECHO "Printing results for task 1: "
+ZUNIONSTORE activity:last3days 3 activity:2025-11-06 activity:2025-11-05 activity:2025-11-04 WEIGHTS 1 1 1
+EXPIRE activity:last3days 86400
+ZRANGE activity:last3days 0 2 REV WITHSCORES
+
+ECHO "---------------------------------------------"
+ECHO "Printing result for task 10: "
+ZREVRANGE achievements_count:42 0 9 WITHSCORES
+
+HGET user:9671 username
+HGET user:4279 username
+HGET user:3802 username
+HGET user:3503 username
+
+ECHO "---------------------------------------------"
+ECHO "Printing result for task 11: "
+ZREVRANGE studio:counts 0 9 WITHSCORES
+
+HGET studio:s1 name
+HGET studio:s2 name
+HGET studio:s3 name

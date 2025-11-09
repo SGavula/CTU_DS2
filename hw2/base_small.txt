@@ -1,0 +1,61 @@
+ECHO "Running commands for task 1"
+HSET user:1001 username "user_w0tvhY"
+HSET user:1002 username "user_XThQYn"
+HSET user:1003 username "user_S9suhy"
+HSET user:3503 username "user_AA630o"
+HSET user:3802 username "user_TanCtn"
+HSET user:4279 username "user_FI7sND"
+HSET user:9671 username "user_pdkvwf"
+
+SADD events:loaded 1
+SADD events:loaded 2
+SADD events:loaded 3
+SADD events:loaded 4
+SADD events:loaded 5
+
+ZINCRBY activity:2025-11-06 3 1001
+ZINCRBY activity:2025-11-06 2 1002
+ZINCRBY activity:2025-11-05 1.5 1001
+ZINCRBY activity:2025-11-05 4 1003
+ZINCRBY activity:2025-11-04 2 1002
+
+ECHO "---------------------------------------------"
+ECHO "Running commands for task 10"
+SADD user:4279:game:42:achievements "42-4279"
+ZINCRBY achievements_count:42 1 4279
+
+SADD user:9671:game:42:achievements "42-9671"
+ZINCRBY achievements_count:42 1 9671
+
+SADD user:3503:game:42:achievements "42-3503"
+ZINCRBY achievements_count:42 1 3503
+
+SADD user:3802:game:42:achievements "42-3802"
+ZINCRBY achievements_count:42 1 3802
+
+ECHO "---------------------------------------------"
+ECHO "Running commands for task 11"
+HSET studio:s1 name "Studio Alpha"
+SADD studio:members:s1 u1
+ZINCRBY studio:counts 1 s1
+SET user:studio:u1 s1
+
+HSET studio:s1 name "Studio Alpha"
+SADD studio:members:s1 u2
+ZINCRBY studio:counts 1 s1
+SET user:studio:u2 s1
+
+HSET studio:s2 name "Studio Beta"
+SADD studio:members:s2 u3
+ZINCRBY studio:counts 1 s2
+SET user:studio:u3 s2
+
+SADD studio:members:s1 u1
+
+SREM studio:members:s1 u2
+ZINCRBY studio:counts -1 s1
+
+HSET studio:s2 name "Studio Beta"
+SADD studio:members:s2 u2
+ZINCRBY studio:counts 1 s2
+SET user:studio:u2 s2
