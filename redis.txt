@@ -1,0 +1,103 @@
+Get the hourly rate of employee 5
+HGET employee:5 hourly_rate
+
+Get the name, calories, and caffeine content of product 7.
+HMGET product:7 name calories caffeine
+
+Find out how many customers have more than 5000 loyalty points.
+ZLE
+ZCOUNT customer_loyalty_points (5000 +inf
+
+Find out how many customers have less than 5000 loyalty points
+ZLE
+ZCOUNT customer_loyalty_points -inf (5000
+ZCOUNT customer_loyalty_points -inf 4999
+
+Add a new store 'CityBrew Tech Hub' with ID 9, located at '789 Silicon Valley', phone number '555-9876', and 40 seats.
+HSET store:9 name "CityBrew Tech Hub" address "789 Silicon Valley" phone "555-9876" seats 40
+
+Add a new customer 'Alice Johnson' to the HyperLogLog structure tracking unique customers for store with ID 5 today.
+PFADD store:5:customers:20231202 "Alice Johnson" - ZLE
+
+Add a new employee 'Eva Green' as a 'Barista' to store with ID 1. Hire date is September 15, 2023, hourly rate is 16.50, and the employee works part-time.
+HSET employee:8 \
+name "Eva Green" \
+position "Barista" \
+hire_date 1694736000 \
+hourly_rate 16.50 \
+full_time 0 \
+store_id 1
+HSET employee:8 name "Eva Green" position "Barista" hire_date 1694736000 hourly_rate 16.50 full_time 0 store_id 1 - ZLE
+
+Add three new allergens to the global set of allergens: 'Sulfites', 'Lupin', and 'Molluscs'.
+SADD global:allergens "Sulfites" "Lupin" "Molluscs"
+
+Update the bitmap to mark store with ID 4 as closed on the 7th day of the current month.
+SETBIT store:status 3 0
+
+Update the status of store 3 to indicate it's currently renovating
+ZLE
+SET store:3:current_status "renovating"
+HSET store:3 status "renovating"
+SETBIT store:status 3 0
+
+Create a new hash for tracking inventory levels of store with ID 6, setting 'coffee_beans' to 100, 'milk' to 50, and 'cups' to 500.
+HSET inventory:store:6 coffee_beans 100 milk 50 cups 500 - zle
+HSET inventory:6 coffee_beans 100 milk 50 cups 500 
+
+Add 'Cinnamon Dolce Latte' to the end of the recent_orders list for store 1.
+RPUSH store:1:recent_orders "Cinnamon Dolce Latte" - DOBRE
+
+Increment the number of loyalty points for customer with ID 1 by 50 points.
+ZINCRBY customer_loyalty_points 50 "John Doe" - ZLE
+
+Get the total sales amount for today from all stores (assume each store has a key 'store:{id}:sales:20230922' with the day's sales).
+INCRBY total:sales:20230922 1200 
+INCRBY total:sales:20230922 1350 
+INCRBY total:sales:20230922 1100 
+INCRBY total:sales:20230922 1600
+
+GET total:sales:20230922
+
+Get the number of days store with ID 4 was open this month (assuming we're using a bitmap where 1 represents an open day).
+
+Find the number of common allergens between milk alternatives and global allergens
+SINTER global:milk_alternatives global:allergens - ZLE
+
+Get the number of milk alternatives available.
+SCARD global:milk_alternatives - DOBRE
+
+You got these wrong:
+- Create a new hash for tracking inventory levels of store with ID 6, setting 'coffee_beans' to 100, 'milk' to 50, and 'cups' to 500.
+- Add a new customer 'Alice Johnson' to the HyperLogLog structure tracking unique customers for store with ID 5 today.
+- Add a new employee 'Eva Green' as a 'Barista' to store with ID 1. Hire date is September 15, 2023, hourly rate is 16.50, and the employee works part-time.
+- Increment the number of loyalty points for customer with ID 1 by 50 points.
+- Get the total sales amount for today from all stores (assume each store has a key 'store:{id}:sales:20230922' with the day's sales).
+- Get the number of days store with ID 4 was open this month (assuming we're using a bitmap where 1 represents an open day).
+- Find the number of common allergens between milk alternatives and global allergens.
+
+Retrieve all information about the store with ID 3
+HGETALL store:3
+
+Find all Gold loyalty customers
+SMEMBERS loyalty:Gold
+
+Find the store with the highest monthly sales.
+ZREVRANGE monthly_sales 0 0 WITHSCORES
+
+Add three new members to the set 'store:8:equipment': 'Coffee Grinder', 'Espresso Machine', and 'Milk Frother'.
+SADD store:8:equipment "Coffee Grinder" "Espresso Machine" "Milk Frother"
+
+Increment the total number of customers served today for store with ID 3 by 5.
+PFADD store:3:daily_customers "customer1" "customer2" "customer3" "customer4" "customer5"
+
+Create a new sorted set 'loyalty_levels' with the following members and scores: 'Bronze' with 0, 'Silver' with 100, 'Gold' with 500, and 'Platinum' with 1000.
+ZADD loyalty_levels 0 "Bronze" 100 "Silver" 500 "Gold" 1000 "Platinum"
+
+Update the geolocation of 'CityBrew Downtown' to longitude -122.4194 and latitude 37.7749.
+GEOADD store_locations -122.4194 37.7749 "CityBrew Downtown"
+
+- Find out how many customers have less than 5000 loyalty points.
+- Create a new hash for tracking inventory levels of store with ID 6, setting 'coffee_beans' to 100, 'milk' to 50, and 'cups' to 500.
+- Increment the total number of customers served today for store with ID 3 by 5.
+- Update the status of store 3 to indicate it's currently renovating.

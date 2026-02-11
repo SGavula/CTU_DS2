@@ -296,6 +296,19 @@ def gen_wishlists(users, games):
         }
         wishlists.append(wl)
     return wishlists
+
+def gen_user_game_lists(users, games):
+    game_ids = [g["game_id"] for g in games]
+
+    for u in users:
+        # number of owned games: Zipf distributed (few users have many games)
+        k = np.random.choice(range(0, 200), p=np.linspace(0.9, 0.1, 200) / np.linspace(0.9, 0.1, 200).sum())
+        k = min(k, len(game_ids))
+
+        owned = random.sample(game_ids, k=k) if k > 0 else []
+        u["games"] = owned
+
+    return users
  
 # --------- I/O helpers ----------
 def write_jsonl(path, records):
@@ -359,6 +372,9 @@ def main(args):
     print("Generating wishlists...")
     wishlists = gen_wishlists(users, games)
  
+    print("Adding games to users...")
+    users = gen_user_game_lists(users, games)
+
     # write outputs
     print("Writing files...")
     write_json(os.path.join(args.outdir, "genres.json"), genres)
